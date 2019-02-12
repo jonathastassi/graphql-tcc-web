@@ -116,7 +116,7 @@ const resolvers = {
       return providers.users;
     },  
     getPost: (root, {id}) => {
-      return providers.post.find(item => item.id == id);      
+      return providers.posts.find(item => item.id == id);      
     },
     getPosts: () => {
       return providers.posts;
