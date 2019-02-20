@@ -146,6 +146,11 @@ const resolvers = {
   }
 };
 
+const corsOptions = {
+  origin: 'localhost:4000/graphql',
+  // credentials: true
+}
+
 const server = new ApolloServer({ 
     typeDefs,
     resolvers,
@@ -157,9 +162,10 @@ const server = new ApolloServer({
  });
 
 const app = express();
-server.applyMiddleware({ app });
 
-const port = 4000;
+server.applyMiddleware({ app, cors: true, bodyParserConfig: true});
+
+const port = 4001;
 
 app.listen({ port }, () =>
   console.log(`🚀 Server ready at http://localhost:${port}${server.graphqlPath}`),
